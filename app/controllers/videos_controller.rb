@@ -1,7 +1,9 @@
 class VideosController < ApplicationController
   def index
-    videos = Video.latest(params[:last_id]).limit(10)
-    render json: VideoSerializer.new(videos).serializable_hash
+    videos = Video.latest(params[:last_id]).includes(:user).limit(21)
+    render json: VideoSerializer.new(videos,
+                                     { include: [:user], params: { is_truncated: true },
+                                       meta: { has_next_page: videos.count > 20 } }).serializable_hash
   end
 
   # def create
