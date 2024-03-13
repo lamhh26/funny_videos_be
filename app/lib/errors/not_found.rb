@@ -4,9 +4,7 @@ module Errors
       super(
         title: 'Record not Found',
         status: 404,
-        detail: {
-          msg: 'We could not find the record you were looking for.'
-        }
+        detail: 'We could not find the record you were looking for.'
       )
     end
   end

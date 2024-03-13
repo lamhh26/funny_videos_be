@@ -4,7 +4,8 @@ module Errors
       super(
         title: 'Unprocessable Entity',
         status: 422,
-        detail: error.reduce([]) { |r, (field, msg)| r << { field:, msg: msg[0] } })
+        detail: error
+      )
     end
   end
 end

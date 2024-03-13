@@ -4,7 +4,8 @@ module Errors
       super(
         title: 'Unprocessable Entity',
         status: 422,
-        detail: { msg: "Can't verify CSRF token authenticity" })
+        detail: "Can't verify CSRF token authenticity"
+      )
     end
   end
 end

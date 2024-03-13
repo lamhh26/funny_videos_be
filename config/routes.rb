@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     devise_scope :user do
       post 'signup', to: 'registrations#create'
       post 'login', to: 'sessions#create'
+      delete 'logout', to: 'sessions#destroy'
     end
 
     resources :videos, only: %i[index create show]
+    get 'current_user' => 'users#show'
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

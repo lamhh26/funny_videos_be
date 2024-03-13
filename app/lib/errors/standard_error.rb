@@ -6,7 +6,7 @@ module Errors
       super()
       @title = title || 'Something went wrong'
       @status = status || 500
-      @detail = detail.nil? ? { msg: 'We encountered unexpected error' } : detail
+      @detail = detail.nil? ? 'We encountered unexpected error' : detail
     end
 
     def to_h

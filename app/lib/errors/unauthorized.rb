@@ -4,9 +4,7 @@ module Errors
       super(
         title: 'Unauthorized',
         status: 401,
-        detail: {
-          msg: 'You need to login to authorize this request.'
-        }
+        detail: 'You need to login to authorize this request.'
       )
     end
   end
