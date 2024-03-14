@@ -3,6 +3,7 @@ module ErrorHandler
 
   ERRORS = {
     'ActiveRecord::RecordNotFound' => 'Errors::NotFound',
+    'ActiveRecord::RecordInvalid' => 'Errors::InvalidRecord',
     'ActionController::InvalidAuthenticityToken' => 'Errors::InvalidAuthToken'
   }.freeze
 
@@ -23,7 +24,7 @@ module ErrorHandler
   def map_error(err)
     return err if Errors::StandardError.descendants.include?(err.class)
 
-    ERRORS[err.class.name]&.constantize&.new
+    ERRORS[err.class.name]&.constantize&.new(err)
   end
 
   def render_error(error)

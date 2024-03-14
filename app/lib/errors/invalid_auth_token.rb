@@ -1,6 +1,6 @@
 module Errors
   class InvalidAuthToken < Errors::StandardError
-    def initialize
+    def initialize(_err = nil)
       super(
         title: 'Unprocessable Entity',
         status: 422,

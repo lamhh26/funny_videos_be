@@ -1,6 +1,6 @@
 module Errors
   class Unauthorized < Errors::StandardError
-    def initialize
+    def initialize(_err = nil)
       super(
         title: 'Unauthorized',
         status: 401,

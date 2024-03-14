@@ -1,6 +1,6 @@
 module Errors
   class NotFound < Errors::StandardError
-    def initialize
+    def initialize(_err = nil)
       super(
         title: 'Record not Found',
         status: 404,

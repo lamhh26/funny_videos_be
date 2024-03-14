@@ -1,10 +1,10 @@
 module Errors
   class InvalidRecord < Errors::StandardError
-    def initialize(error)
+    def initialize(err)
       super(
         title: 'Unprocessable Entity',
         status: 422,
-        detail: error
+        detail: err.record.errors.to_hash
       )
     end
   end

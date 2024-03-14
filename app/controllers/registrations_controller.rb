@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def respond_with(current_user, _opts = {})
-    raise Errors::InvalidRecord, resource.errors.to_hash unless resource.persisted?
+    raise ActiveRecord::RecordInvalid, resource unless resource.persisted?
 
     render json: {
       user: UserSerializer.new(current_user).serializable_hash[:data][:attributes]
