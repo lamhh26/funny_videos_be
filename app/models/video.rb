@@ -5,6 +5,7 @@ class Video < ApplicationRecord
   validate :valid_url?
 
   before_save :change_info
+  after_create :notify
 
   scope :latest, lambda { |last_id = nil|
     if last_id.blank?
@@ -26,5 +27,10 @@ class Video < ApplicationRecord
     video = VideoInfo.new(url)
     self.title = video.title
     self.description = video.description
+  end
+
+  def notify
+    video = VideoSerializer.new(self, { include: [:user], fields: { video: [:title] } }).serializable_hash
+    ActionCable.server.broadcast('notifications_channel', video)
   end
 end

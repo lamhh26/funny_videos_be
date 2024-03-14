@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :videos, only: %i[index create show]
     get 'current_user' => 'users#show'
   end
+
+  mount ActionCable.server => '/cable'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
