@@ -4,7 +4,8 @@ module ErrorHandler
   ERRORS = {
     'ActiveRecord::RecordNotFound' => 'Errors::NotFound',
     'ActiveRecord::RecordInvalid' => 'Errors::InvalidRecord',
-    'ActionController::InvalidAuthenticityToken' => 'Errors::InvalidAuthToken'
+    'ActionController::InvalidAuthenticityToken' => 'Errors::InvalidAuthToken',
+    'ActionController::ParameterMissing' => 'Errors::ParameterMissing'
   }.freeze
 
   included do

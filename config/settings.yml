@@ -1,0 +1,14 @@
+default: &default
+  videos:
+    page: 10
+    description:
+      max_words: 100
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

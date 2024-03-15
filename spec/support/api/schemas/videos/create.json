@@ -1,0 +1,22 @@
+{
+  "id": "file:/videos/index.json#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "Video",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "$ref": "file:/video.json#"
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "$ref": "file:/user.json#"
+      }
+    }
+  },
+  "required": [
+    "data",
+    "included"
+  ]
+}

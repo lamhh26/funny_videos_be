@@ -1,0 +1,33 @@
+{
+  "id": "file:/videos/index.json#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "Video list",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "file:/video.json#"
+      }
+    },
+    "included": {
+      "type": "array",
+      "items": {
+        "$ref": "file:/user.json#"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "has_next_page": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": [
+    "data",
+    "included",
+    "meta"
+  ]
+}

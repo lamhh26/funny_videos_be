@@ -1,0 +1,42 @@
+{
+  "id": "file:/video.json#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "Video",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "url"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "attributes"
+  ]
+}

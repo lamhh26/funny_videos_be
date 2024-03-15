@@ -1,0 +1,34 @@
+{
+  "id": "file:/user.json#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "description": "User",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "email"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "attributes"
+  ]
+}
