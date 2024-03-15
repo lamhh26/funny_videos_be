@@ -2,7 +2,7 @@ class Video < ApplicationRecord
   belongs_to :user
 
   validates :url, presence: true
-  validate :valid_url?
+  validate :valid_url?, if: -> { !url.blank? }
 
   before_save :change_info
   after_create :notify
@@ -30,7 +30,6 @@ class Video < ApplicationRecord
   end
 
   def notify
-    video = VideoSerializer.new(self, { include: [:user], fields: { video: [:title] } }).serializable_hash
-    ActionCable.server.broadcast('notifications_channel', video)
+    NotificationJob.perform_async(id)
   end
 end

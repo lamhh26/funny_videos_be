@@ -16,6 +16,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
+      sidekiq:
+        condition: service_started
   db:
     image: postgres:16
     ports:
@@ -35,6 +37,18 @@ services:
       - redis_data:/data
     ports:
       - "6379:6379"
+  sidekiq:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    command: bundle exec sidekiq
+    depends_on:
+      redis:
+        condition: service_started
+    volumes:
+      - .:/rails
+    env_file:
+      - .env
 
 volumes:
   pg_data:
