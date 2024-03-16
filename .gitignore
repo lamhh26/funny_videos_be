@@ -33,3 +33,5 @@
 /config/master.key
 
 /.devcontainer
+
+/config/credentials/production.key
