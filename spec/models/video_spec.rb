@@ -14,7 +14,7 @@ RSpec.describe Video, type: :model do
     context 'when url is invalid' do
       let(:video) { build :video, url: 'abcd' }
       it 'returns errors' do
-        expect(video.save).to be false
+        expect(video.valid?).to be false
         expect(video.errors.messages[:url]).to eq ['is not valid']
       end
     end
@@ -23,7 +23,7 @@ RSpec.describe Video, type: :model do
       let(:video) { build :video, url: FFaker::Youtube.url }
 
       it 'returns errors' do
-        expect(video.save).to be true
+        expect(video.valid?).to be true
       end
     end
   end

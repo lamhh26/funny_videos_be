@@ -18,6 +18,8 @@ services:
         condition: service_started
       sidekiq:
         condition: service_started
+      chrome:
+        condition: service_started
   db:
     image: postgres:16
     ports:
@@ -49,6 +51,12 @@ services:
       - .:/rails
     env_file:
       - .env
+  chrome:
+    image: seleniarm/standalone-chromium
+    ports:
+      - 4444:4444
+      - 7900:7900
+      - 5900:5900
 
 volumes:
   pg_data:
