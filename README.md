@@ -28,10 +28,42 @@ Docker Compose version v2.24.6-desktop.1
   git clone https://github.com/lamhh26/funny_videos_be.git
   ```
 - Configuring settings and installing
-  - Copy the `.env.example` file to a new file called `.env`
    ```
     cp .env.example .env
     docker compose build
    ```
-  - 
+### Database Setup
+```
+docker compose run --rm web rails db:setup
 
+```
+
+### Running the Application
+- Running the development server
+  ```
+  docker compose up -d
+  ```
+  After that you can see the app at http://localhost:3000
+
+### Running tests
+- With test suites of `models`, `requests`, `sidekiq`, we can run as below
+  ```
+  docker compose run --rm web rspec --exclude-pattern "spec/system/**/*_spec.rb"
+  ```
+- With test suites of the intergration test in `system` folder: In integration testing we will use the libraries `capybara` and `selenium-webdriver`
+   - Fist running backend app like [above]([https://github.com/lamhh26/funny_videos_be/edit/main/README.md#running-the-application)
+   - First we need to run the frontend application. At [frontend repo](https://github.com/lamhh26/funny_videos_be) run these commands
+     ```
+     # Create .env file if it doesn't exist
+     cp .env.example .env
+
+     # Change the file content to the following
+     REACT_APP_API_BASE_URL=http://web:3000
+     REACT_APP_WEBSOCKET_URL=ws://web:3000/cable
+
+     # Build a image from Dockerfile
+     docker build -f Dockerfile.dev -t funny-videos-fe .
+     
+     # Run the frontend app
+     
+     ```
