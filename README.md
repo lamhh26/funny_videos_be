@@ -37,11 +37,11 @@ git clone https://github.com/lamhh26/funny_videos_be.git
 Configuring settings and installing:
 
 ```
- cp .env.example .env
- docker compose build
+cp .env.example .env
+docker compose build
 
 # Create a docker network
- docker network create -d bridge app_network
+docker network create -d bridge app_network
 ```
 
 ### Database Setup
