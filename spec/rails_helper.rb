@@ -66,7 +66,7 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-Capybara.app_host = ENV.fetch('CROSS_ORIGIN_DOMAIN') { 'localhost:3001' }
+Capybara.app_host = ENV.fetch('CAPYBARA_APP_HOST') { 'http://localhost:3001' }
 
 # Set the host and port
 Capybara.server_host = '0.0.0.0'

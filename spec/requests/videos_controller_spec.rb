@@ -126,28 +126,28 @@ RSpec.describe VideosController, type: :request do
         sign_in user
       end
 
-      it 'request with an invalid params' do
+      it 'requests with an invalid params' do
         post '/videos', params: { url: '' }
 
         expect(response).to have_http_status :bad_request
         expect(parsed_res.error.detail).to eq 'param is missing or the value is empty: video'
       end
 
-      it 'request with a blank url' do
+      it 'requests with a blank url' do
         post '/videos', params: { video: { url: '' } }
 
         expect(response).to have_http_status :unprocessable_entity
         expect(parsed_res.error.detail.url).to eq ["can't be blank"]
       end
 
-      it 'request with an invalid url' do
+      it 'requests with an invalid url' do
         post '/videos', params: { video: { url: 'a' } }
 
         expect(response).to have_http_status :unprocessable_entity
         expect(parsed_res.error.detail.url).to eq ['is not valid']
       end
 
-      it 'request with an valid params' do
+      it 'requests with an valid params' do
         allow(VideoInfo).to receive(:new).and_return(video_info)
         allow(video_info).to receive(:title).and_return video.title
         allow(video_info).to receive(:description).and_return video.description
@@ -158,6 +158,10 @@ RSpec.describe VideosController, type: :request do
         expect(parsed_res.data.attributes.url).to eq video.url
         expect(parsed_res.data.attributes.description).to eq video.description.truncate_words(100)
         expect(parsed_res.data.relationships.user.data.id).to eq user.id.to_s
+      end
+
+      it 'increases number of videos' do
+        expect { post '/videos', params: { video: { url: video.url } } }.to change(Video, :count).by(1)
       end
     end
   end
