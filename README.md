@@ -112,7 +112,7 @@ docker stop [CONTAINER_NAME]
 docker rm [CONTAINER_NAME]
 ```
 
-We are using `selenium` to do integration testing, currently we are using `seleniarm/standalone-chromium` docker image, which is compatible with `arm64` platform (for M series Mac). For other platforms, you need to switch to using `selenium/standalone-chrome` image.
+We are using `selenium` to do integration testing, currently we are using `seleniarm/standalone-chromium` docker image, which is compatible with `arm64` platform (for M series Mac). For other platforms such as `amd64`, you need to switch to using `selenium/standalone-chrome` image.
 
 ```
 chrome:
