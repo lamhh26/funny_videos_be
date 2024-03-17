@@ -98,6 +98,11 @@ Run `rspec` command to execute integration test suites
 ```
 docker compose run --rm --name backend web rspec spec/system/videos_spec.rb
 ```
+
+### Usage
+
+Refer [this](https://github.com/lamhh26/funny_videos_fe/blob/main/README.md#usage)
+
 ### Troubleshooting
 
 Because when executing `docker compose run` and `docker run` we specify fixed container names so the error like `The container name "[CONTAINER_NAME]" is already in use by container ` may occur. Then we need to stop and delete the previously existing container.
