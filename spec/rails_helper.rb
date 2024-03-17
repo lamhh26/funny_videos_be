@@ -76,7 +76,7 @@ Capybara.server_port = '3000'
 Capybara.register_driver :remote_selenium do |app|
   # Pass our arguments to run headless
   options = Selenium::WebDriver::Chrome::Options.new
-  options.add_argument('--headless')
+  # options.add_argument('--headless')
   options.add_argument('--no-sandbox')
   options.add_argument('--disable-dev-shm-usage')
   options.add_argument('--remote-debugging-port=9222')

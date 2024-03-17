@@ -36,4 +36,33 @@ RSpec.describe 'Videos', type: :system do
       end
     end
   end
+
+  describe 'create page' do
+    let(:user) { create(:user) }
+
+    before do
+      allow_any_instance_of(ApplicationController).to receive(:protect_against_forgery?).and_return(false)
+
+      visit('/')
+      click_button 'Login'
+
+      within(:xpath, "//div[h1[text()='Login']]") do
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
+        click_button 'Login'
+      end
+
+      click_button 'Share a video'
+    end
+
+    context 'when fill in video url' do
+      it 'is an empty url' do
+        within(:xpath, '//form') do |_form|
+          fill_in 'Youtube URL', with: 'a'
+          # click_button 'Share'
+          sleep 100
+        end
+      end
+    end
+  end
 end
