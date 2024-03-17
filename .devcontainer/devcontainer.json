@@ -1,0 +1,16 @@
+{
+    "name": "Existing Docker Compose",
+    "dockerComposeFile": ["../docker-compose.yml", "docker-compose.yml"],
+    "service": "web",//Specify the service name and Rails service to be started as described in docker-compse.yml
+    "workspaceFolder": "/rails",//　The directory to connect to at startup
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "castwide.solargraph", // solargraph
+                "rebornix.Ruby", // Ruby syntax highlighting, etc.
+                "misogi.ruby-rubocop", // Rubocop
+                "KoichiSasada.vscode-rdbg" // Ruby Debug see below
+            ]
+        }
+    }
+}
