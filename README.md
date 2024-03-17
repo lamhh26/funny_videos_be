@@ -75,7 +75,7 @@ PGUSER=postgres
 PGPASSWORD=postgres
 REDIS_URL=redis://redis:6379
 CROSS_ORIGIN_DOMAIN=frontend:3001
-CAPYBARA_APP_HOST=http://frontend:300
+CAPYBARA_APP_HOST=http://frontend:3001
 ```
 
 We also need to run the frontend application. At [frontend repo](https://github.com/lamhh26/funny_videos_be) run these commands:
