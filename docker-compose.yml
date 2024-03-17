@@ -20,6 +20,8 @@ services:
         condition: service_started
       chrome:
         condition: service_started
+    networks:
+      - app_network
   db:
     image: postgres:16
     ports:
@@ -33,12 +35,16 @@ services:
       interval: 2s
       timeout: 5s
       retries: 30
+    networks:
+      - app_network
   redis:
     image: redis
     volumes:
       - redis_data:/data
     ports:
       - "6379:6379"
+    networks:
+      - app_network
   sidekiq:
     build:
       context: ./
@@ -51,14 +57,23 @@ services:
       - .:/rails
     env_file:
       - .env
+    networks:
+      - app_network
   chrome:
     image: seleniarm/standalone-chromium
     ports:
       - 4444:4444
       - 7900:7900
       - 5900:5900
+    networks:
+      - app_network
 
 volumes:
   pg_data:
   redis_data:
   bundle:
+
+networks:
+  app_network:
+    name: app_network
+    external: true
