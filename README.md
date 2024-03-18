@@ -7,7 +7,7 @@ This is a web app API for sharing YouTube videos using Ruby on Rails with Postgr
 1. User registration and login.
 2. Sharing YouTube videos.
 3. Viewing a list of shared videos (no need to display up/down votes).
-4. Real-time notifications for new video shares: When a user shares a new video, other logged-in users should receive a real-time notification about the newly shared video.
+4. Real-time notifications for new video shares: When a user shares a new video, other logged-in users could receive a real-time notification about the newly shared video.
 
 ### Prerequisites:
 
@@ -66,7 +66,7 @@ With test suites of `models`, `requests`, `sidekiq`, we can run as below:
 docker compose run --rm web rspec --exclude-pattern "spec/system/**/*_spec.rb"
 ```
 
-With test suites of the intergration test in `system` folder: In integration testing we will use the libraries `capybara` and `selenium-webdriver`
+With test suites of the intergration test in `system` folder, we use the libraries `capybara` and `selenium-webdriver`
 
 Change `.env` file like below:
 ```
@@ -76,6 +76,12 @@ PGPASSWORD=postgres
 REDIS_URL=redis://redis:6379
 CROSS_ORIGIN_DOMAIN=frontend:3001
 CAPYBARA_APP_HOST=http://frontend:3001
+```
+
+Stop the running containers if have any
+
+```
+docker compose down
 ```
 
 We also need to run the frontend application. At [frontend repo](https://github.com/lamhh26/funny_videos_be) run these commands:
