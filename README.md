@@ -116,6 +116,9 @@ Because when executing `docker compose run` and `docker run` we specify fixed co
 ```
 docker stop [CONTAINER_NAME]
 docker rm [CONTAINER_NAME]
+
+# Or
+docker compose down
 ```
 
 We are using `selenium` to do integration testing, currently we are using `seleniarm/standalone-chromium` docker image, which is compatible with `arm64` platform (for M series Mac). For other platforms such as `amd64`, you need to switch to using `selenium/standalone-chrome` image.
