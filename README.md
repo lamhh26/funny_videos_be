@@ -121,6 +121,8 @@ docker rm [CONTAINER_NAME]
 We are using `selenium` to do integration testing, currently we are using `seleniarm/standalone-chromium` docker image, which is compatible with `arm64` platform (for M series Mac). For other platforms such as `amd64`, you need to switch to using `selenium/standalone-chrome` image.
 
 ```
+#docker-compose.yml
+...
 chrome:
   image: selenium/standalone-chrome
   container_name: chrome
@@ -128,4 +130,5 @@ chrome:
     - 4444:4444
     - 7900:7900
     - 5900:5900
+...
 ```
