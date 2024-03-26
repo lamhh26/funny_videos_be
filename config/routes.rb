@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       delete 'logout', to: 'sessions#destroy'
     end
 
-    resources :videos, only: %i[index create show]
+    resources :videos, only: %i[index create show] do
+      resources :comments, except: :show
+    end
     get 'current_user' => 'users#show'
   end
 

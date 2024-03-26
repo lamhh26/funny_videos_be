@@ -1,5 +1,7 @@
 class Video < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
+  has_many :latest_comments, -> { order(id: :desc).limit(3) }, class_name: Comment.name
 
   validates :url, presence: true
   validate :valid_url?, if: -> { !url.blank? }
