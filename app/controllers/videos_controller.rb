@@ -14,6 +14,11 @@ class VideosController < ApplicationController
     render json: VideoSerializer.new(video, { include: [:user], params: { is_truncated: true } }).serializable_hash
   end
 
+  def show
+    video = Video.find(params[:id])
+    render json: VideoSerializer.new(video, { include: [:user], params: { is_truncated: false } }).serializable_hash
+  end
+
   private
 
   def video_params
