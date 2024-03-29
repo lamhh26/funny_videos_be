@@ -1,5 +1,6 @@
 class Video < ApplicationRecord
   belongs_to :user
+  has_many :votes
 
   validates :url, presence: true
   validate :valid_url?, if: -> { !url.blank? }
@@ -14,6 +15,10 @@ class Video < ApplicationRecord
       order(id: :desc).where(Video.arel_table[:id].lt(last_id))
     end
   }
+
+  def vote_num_by(user)
+    votes.where(user:).sum(:vote_type)
+  end
 
   private
 

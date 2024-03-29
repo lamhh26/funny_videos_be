@@ -7,7 +7,10 @@ Rails.application.routes.draw do
       delete 'logout', to: 'sessions#destroy'
     end
 
-    resources :videos, only: %i[index create show]
+    resources :videos, only: %i[index create show] do
+      post 'up_vote', to: 'votes#up_vote'
+      post 'down_vote', to: 'votes#down_vote'
+    end
     get 'current_user' => 'users#show'
   end
 
